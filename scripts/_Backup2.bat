@@ -3,8 +3,7 @@
 @CHCP 65001 >nul 
 
 :restart
-CD %~dp0%
-CD ..
+CD "teste"
 cls
 
 set BASE_DIR=%CD%
