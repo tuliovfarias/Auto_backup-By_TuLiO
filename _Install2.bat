@@ -7,16 +7,16 @@ echo ----------------By TuLiO-------------------
 echo [%date:~6,10%-%date:~3,2%-%date:~0,2% %time:~0,8%] Instalando Auto-backup...
 echo -Inserindo atalho _Backup.bat no menu contexto "Enviar para"...
 ::Insere menu contexto "Enviar para"
-::mklink "%BASE_DIR%\_Backup.bat" "%BASE_DIR%\scripts\_Backup.bat"
-::move "%BASE_DIR%\_Backup.bat" "%APPDATA%\Microsoft\Windows\SendTo"
-::cacls %APPDATA%\Microsoft\Windows\SendTo /E /P %USERNAME%:F
-::mklink "%APPDATA%\Microsoft\Windows\SendTo" "%BASE_DIR%\scripts\_Backup.bat"
-SET COMMAND="(Get-Content %SCRIPT_PATH%) |  %{$_ -replace 'CD \".*\"',"CD `"%BASE_DIR%`""} | Set-Content -Path .\teste.txt"
-powershell -ExecutionPolicy Bypass -Command "& {&'%COMMAND%'}"
+::SET COMMAND="(Get-Content %SCRIPT_PATH%) | %%{$_ -replace 'CD \".*\"',"CD `"%BASE_DIR%`""} | Set-Content -Path %SCRIPT_PATH%"
+::echo %COMMAND%
+::SET COMMAND=%COMMAND:"=%
+::powershell -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -WindowStyle Hidden -Command "%COMMAND%"
+call C:\cygwin64\bin\bash.exe -l -c "sed 's/CD "".*""/CD "%SCRIPT_PATH%"/' ""%SCRIPT_PATH%"""
 xcopy "%SCRIPT_PATH%" "%APPDATA%\Microsoft\Windows\SendTo"
 ::net user Administrador /active:yes
 echo -Agendando tarefa "Auto_backup"
 ::Cria tarefa no Task Scheduler
 SCHTASKS /Create /RU SYSTEM /SC MINUTE /MO 5 /TN Auto_backup /TR "'%~dp0%scripts\abu_task.bat'"
 echo [%date:~6,10%-%date:~3,2%-%date:~0,2% %time:~0,8%] Instalado!
-pause
+
+PAUSE

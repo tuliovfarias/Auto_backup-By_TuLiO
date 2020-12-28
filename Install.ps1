@@ -10,7 +10,7 @@ if ((Test-Admin) -eq $false){
 }
 
 # Diretório base é a pasta onde o script está
-$BASE_DIR=$PSScriptRoot
+$BASE_DIR=$PSScriptRoot #Diretório do script
 $SCRIPT_PATH="$BASE_DIR\scripts\_Backup2.bat"
 function Get-TimeStamp {    
     return "[{0:dd/MM/yyyy} {0:HH:mm:ss}]" -f (Get-Date)   
