@@ -1,6 +1,6 @@
-[28/12/2020_00:26:02] Iniciando backup de 3 arquivos
+[28/12/2020_00:41:02] Iniciando backup de 3 arquivos
  C:\Users\Túlio\Desktop\test.py>C:\Users\Túlio\Desktop\teste bu\
  C:\Users\Túlio\Desktop\Termo Aditivo ao Contrato de Estágio - Tulio Farias - 1º renovação.pdf>C:\Users\Túlio\Desktop\teste bu\
  C:\Users\Túlio\Desktop\NEC new>C:\Users\Túlio\Desktop\teste bu\
-[28/12/2020_00:26:08] Terminou backup dos arquivos
+[28/12/2020_00:41:08] Terminou backup dos arquivos
 
