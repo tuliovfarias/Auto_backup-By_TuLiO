@@ -1,6 +1,6 @@
 #FILES_LIST=`cygpath -u "D:\Google Drive\Auto_backup\listas\LISTA_BACKUP.txt"`
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-echo "diretorio do script" $DIR 
+#echo "diretorio do script" $DIR
 cd $DIR; cd ..
 FILES_LIST="listas/LISTA_BACKUP.txt"
 

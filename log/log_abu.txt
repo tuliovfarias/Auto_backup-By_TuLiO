@@ -1,7 +1,6 @@
-[01/12/2020_10:50:02] Iniciando backup de 4 arquivos
- C:\Users\Túlio\Desktop\test.py>C:\Users\Túlio\Desktop\target\
- C:\Users\Túlio\Desktop\Termo Aditivo ao Contrato de Estágio - Tulio Farias - 1º renovação.pdf>C:\Users\Túlio\Desktop\target\
- C:\Users\Túlio\Desktop\teste bu>C:\Users\Túlio\Desktop\target\
- C:\Users\Túlio\Desktop\Curso_ CURSO LIVRE - Aprendizado de Máquina_da Teoria à prática.lnk>C:\Users\Túlio\Desktop\target\
-[01/12/2020_10:50:09] Terminou backup dos arquivos
+[28/12/2020_00:21:02] Iniciando backup de 3 arquivos
+ C:\Users\Túlio\Desktop\test.py>C:\Users\Túlio\Desktop\teste bu\
+ C:\Users\Túlio\Desktop\Termo Aditivo ao Contrato de Estágio - Tulio Farias - 1º renovação.pdf>C:\Users\Túlio\Desktop\teste bu\
+ C:\Users\Túlio\Desktop\NEC new>C:\Users\Túlio\Desktop\teste bu\
+[28/12/2020_00:21:08] Terminou backup dos arquivos
 

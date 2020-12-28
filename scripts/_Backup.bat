@@ -3,11 +3,10 @@
 @CHCP 65001 >nul 
 
 :restart
-CD %~dp0%
-CD ..
+::CD %~dp0%
 cls
 
-set BASE_DIR=%CD%
+set BASE_DIR="D:\GitHub\Auto-backup"
 set LISTA_BU_DIR=%BASE_DIR%\listas\LISTA_BACKUP.txt
 set SCRIPT_ABU=%BASE_DIR%\scripts\auto_back-up.sh
 
