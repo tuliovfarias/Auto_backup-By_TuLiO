@@ -7,7 +7,7 @@
 cls
 
 set BASE_DIR=C:\GitHub\Auto-backup\
-set LISTA_BU_DIR=%BASE_DIR%\listas\LISTA_BACKUP.txt
+set LISTA_BU_DIR=%BASE_DIR%\LISTA_BACKUP.txt
 set SCRIPT_ABU=%BASE_DIR%\scripts\auto_back-up.sh
 
 echo [%date:~0,2%-%date:~3,2%-%date:~6,10% %time:~0,8%] Adicionar arquivo/pasta para lista de backup
