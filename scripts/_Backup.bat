@@ -6,7 +6,7 @@
 ::CD %~dp0%
 cls
 
-set BASE_DIR="C:\GitHub\Auto-backup"
+set BASE_DIR=C:\GitHub\Auto-backup\
 set LISTA_BU_DIR=%BASE_DIR%\listas\LISTA_BACKUP.txt
 set SCRIPT_ABU=%BASE_DIR%\scripts\auto_back-up.sh
 

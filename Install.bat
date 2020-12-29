@@ -11,9 +11,9 @@ del %LIST_PATH%
 copy NUL %LIST_PATH%
 echo -Inserindo atalho _Backup.bat no menu contexto "Enviar para"...
 ::Insere menu contexto "Enviar para"
-SET COMMAND="(Get-Content %SCRIPT_BU_PATH%) | %%{$_ -replace 'BASE_DIR=\".*\"','BASE_DIR=\"%BASE_DIR%"'} | Set-Content -Path %SCRIPT_BU_PATH%"
+SET COMMAND="(Get-Content %SCRIPT_BU_PATH%) | %%{$_ -replace 'BASE_DIR=.*','BASE_DIR=%BASE_DIR%'} | Set-Content -Path %SCRIPT_BU_PATH%"
 @PowerShell %COMMAND%
-SET COMMAND="(Get-Content %SCRIPT_ABU_PATH%) | %%{$_ -replace 'BASE_DIR=\".*\"','BASE_DIR=\"%BASE_DIR%"'} | Set-Content -Path %SCRIPT_ABU_PATH%"
+SET COMMAND="(Get-Content %SCRIPT_ABU_PATH%) | %%{$_ -replace 'BASE_DIR=.*','BASE_DIR=%BASE_DIR%'} | Set-Content -Path %SCRIPT_ABU_PATH%"
 @PowerShell %COMMAND%
 ::call C:\cygwin64\bin\bash.exe -l -c "sed 's/CD "".*""/CD "%SCRIPT_BU_PATH%"/' ""%SCRIPT_BU_PATH%"""
 xcopy "%SCRIPT_BU_PATH%" "%APPDATA%\Microsoft\Windows\SendTo"

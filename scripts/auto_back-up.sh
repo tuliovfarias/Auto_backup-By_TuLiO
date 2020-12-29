@@ -6,7 +6,7 @@ FILES_LIST="listas/LISTA_BACKUP.txt"
 
 sed -i $'s/\r$//' "$FILES_LIST" # DOS to Unix
 NUM_FILES=`cat "$FILES_LIST" | wc -l`
-echo "["`date +%d/%m/%Y_%H:%M:%S`"]" "Iniciando backup de $NUM_FILES arquivos"
+echo "["`date +%d/%m/%Y_%H:%M:%S`"]" "Iniciando backup de $NUM_FILES arquivo(s)/pasta(s)"
 cat "$FILES_LIST" | while read -r LINE; do
 	SOURCE_PATH="`echo "$LINE" | cut -d '>' -f1`"
 	TARGET_DIR="`echo "$LINE" | cut -d '>' -f2`"
