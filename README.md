@@ -1,5 +1,6 @@
 # Auto-backup
- Cria backup automático de arquivos
+ Cria backup automático de arquivos para SO Windows
+ 
  Para instalar, basta apenas executar "Install.bat" como Administrador
 
  Para usar, basta selecionar os arquivos ou pastas que deseja manter cópia automática, clicar com o botão direito >> Enviar para >> _Backup.bat.

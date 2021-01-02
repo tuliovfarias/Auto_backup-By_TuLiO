@@ -1,0 +1,5 @@
+[02/01/2021_01:10:04] Iniciando backup de 2 arquivo(s)/pasta(s)
+ C:\Users\Túlio\Desktop\rec_create_tar.py>C:\Users\Túlio\Desktop\teste bu\
+ C:\Users\Túlio\Desktop\LTFViewr>C:\Users\Túlio\Desktop\teste bu\
+[02/01/2021_01:10:08] Terminou backup dos arquivos
+
