@@ -1,14 +1,14 @@
 # Auto-backup
  Cria backup automático de arquivos no Windows 10.
 
-**Instalação**
+**Instalação:**
 
 - Executar "Install.bat" **como Administrador**
 
-**Utilização**
+**Utilização:**
 - Selecionar os arquivos ou pastas que deseja manter cópia automática, clicar com o botão direito >> Enviar para >> _Backup.bat.
 
-- Insira o caminho para onde deseja copiar os arquivos no prompt aberto.
+- No prompt aberto, insira o caminho para onde deseja copiar os arquivos.
 
 - Confirme com ENTER. O arquivo será constantemente atualizado no destino.
 
