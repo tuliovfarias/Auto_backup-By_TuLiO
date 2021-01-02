@@ -1,7 +1,7 @@
 # Auto-backup
  Cria backup automático de arquivos no Windows 10.
 
-**INSTALAÇÃO**
+**Instalação**
 
 - Executar "Install.bat" **como Administrador**
 
