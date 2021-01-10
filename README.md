@@ -16,7 +16,7 @@
 
 - No prompt aberto, insira o caminho para onde deseja copiar os arquivos.
 
-- Confirme com ENTER. O arquivo será constantemente atualizado no destino, mesmo se for um dispositivel móvel.
+- Confirme com ENTER. O arquivo será constantemente atualizado no destino, mesmo se for um dispositivo móvel.
 
  Por exemplo, se a origem for uma pasta contendo fotos e o destino for um HD externo, ao adicionar fotos na pasta original, serão automaticamente copiadas para o HD externo.
  
