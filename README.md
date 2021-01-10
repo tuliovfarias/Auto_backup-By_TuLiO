@@ -3,7 +3,7 @@
 
 **Pré requisito:**
 
-- Cygwin
+- Cygwin instalado
 
 **Instalação:**
 
