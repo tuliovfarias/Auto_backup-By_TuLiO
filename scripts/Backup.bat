@@ -9,7 +9,6 @@ cls
 set BASE_DIR=do not change
 set LISTA_BU_DIR=%BASE_DIR%\LISTA_BACKUP.txt
 set SCRIPT_ABU=%BASE_DIR%\scripts\auto_back-up.sh
-set SCRIPT_LIST=%BASE_DIR%\scripts\list_drive.sh
 
 echo [%date:~0,2%-%date:~3,2%-%date:~6,10% %time:~0,8%] Adicionar arquivo/pasta para lista de backup
 ::start shell:mycomputerfolder
@@ -22,8 +21,7 @@ set OP=s
 set /p OP= -Confirma? (s/n)
 if %op% equ n goto restart
 for %%I IN (%*) DO echo %%~I^>%DIR_OUT%\ >> %LISTA_BU_DIR%
-call C:\cygwin64\bin\bash.exe -l %SCRIPT_LIST%
-call C:\cygwin64\bin\bash.exe -l %SCRIPT_ABU%
+call C:\cygwin64\bin\bash.exe -l %SCRIPT_ABU% %userprofile%
 echo [%date:~0,2%-%date:~3,2%-%date:~6,10% %time:~0,8%] Finalizado!
 echo.
 
