@@ -21,7 +21,7 @@ set OP=s
 set /p OP= -Confirma? (s/n)
 if %op% equ n goto restart
 for %%I IN (%*) DO echo %%~I^>%DIR_OUT%\ >> %LISTA_BU_DIR%
-call C:\cygwin64\bin\bash.exe -l %SCRIPT_ABU%
+call %SystemDrive% \cygwin64\bin\bash.exe -l %SCRIPT_ABU%
 echo [%date:~0,2%-%date:~3,2%-%date:~6,10% %time:~0,8%] Finalizado!
 echo.
 
