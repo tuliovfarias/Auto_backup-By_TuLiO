@@ -24,7 +24,6 @@ origin_dir_bu=os.path.dirname(sys.argv[2])
 origin_letter=origin_dir_bu.split('\\')[0]
 paths_bu=sys.argv[2:]
 
-
 bu_list_path_dest=os.path.join(dest_letter,BU_LIST)
 print('bu_list_path1:',bu_list_path_dest)
 bu_list_path_origin=os.path.join(origin_letter,BU_LIST)
