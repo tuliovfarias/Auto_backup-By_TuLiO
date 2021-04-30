@@ -12,27 +12,34 @@ import pandas as pd
 import datetime
 from datetime import timedelta
 
+#for i in range(0,len(sys.argv)):
+#    print(sys.argv[i])
+
 BASE_DIR=os.path.dirname(os.path.dirname(__file__))
 LIST_DIR=os.path.join(BASE_DIR,'list\\')
 LAST_ID=os.path.join(LIST_DIR,'last_id.txt')
 DRIVER_ID = "\\driver_id.txt"
 BU_LIST_PATH=os.path.join(LIST_DIR,'backup_list.txt')
 
-print(time.strftime("%Y-%m-%d %H:%M:%S"),"Starting...")
+print('['+time.strftime("%d-%m-%Y %H:%M:%S")+']',"Starting...")
 #sys.argv.pop(1) #remove segundo elemento da lista de argumentos (path pra este script)
-dest_bu=sys.argv[1]
-origin_dir_bu=os.path.dirname(sys.argv[2])
-paths_bu=sys.argv[2:]
+paths_bu=[]
+for i in range(2,len(sys.argv)):
+    paths_bu.append(sys.argv[i].strip("'"))
+script_path=sys.argv[1]
+dest_bu=sys.argv[2]
+origin_dir_bu=os.path.dirname(paths_bu[1])
 
+win_letter=script_path.split('\\')[0] #letra do disco do windows
 dest_letter=dest_bu.split('\\')[0]
 origin_letter=origin_dir_bu.split('\\')[0]
 base_letter=BASE_DIR.split('\\')[0]
 
-if dest_letter==base_letter:
+if dest_letter==win_letter:
     driver_id_dest_path=BU_LIST_PATH #para não dar erro de permissão
 else:
     driver_id_dest_path=os.path.join(dest_letter,'\\',DRIVER_ID)
-if origin_letter==base_letter:  
+if origin_letter==win_letter:  
     driver_id_origin_path=BU_LIST_PATH #para não dar erro de permissão
 else:
     driver_id_origin_path=os.path.join(origin_letter,'\\',DRIVER_ID)
@@ -76,5 +83,6 @@ with open(BU_LIST_PATH, 'a') as f:
             line+=os.path.basename(path_bu)+','
     print('----->ORIGIN>'+str(id_origin)+'>'+origin_dir_bu+'>DEST>'+str(id_dest)+'>'+dest_bu, file=f)
     print(line, file=f) #f.write(line)
+
 
 # %%
