@@ -24,7 +24,7 @@ set /p OP= -Confirma? (s/n)
 if %op% equ n goto restart
 
 ::for %%I IN (%*) DO echo %%~I
-call python %SCRIPT_ABU% %DIR_OUT% %*
+call python "%SCRIPT_ABU%" "%DIR_OUT%" %*
 echo [%date:~0,2%-%date:~3,2%-%date:~6,10% %time:~0,8%] Finalizado!
 echo.
 

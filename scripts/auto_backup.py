@@ -13,13 +13,12 @@ import datetime
 from datetime import timedelta
 
 BASE_DIR=os.path.dirname(os.path.dirname(__file__))
-LIST_DIR=os.path.join(BASE_DIR,'list')
+LIST_DIR=os.path.join(BASE_DIR,'list\\')
 LAST_ID=os.path.join(LIST_DIR,'last_id.txt')
 DRIVER_ID = "\\driver_id.txt"
 BU_LIST_PATH=os.path.join(LIST_DIR,'backup_list.txt')
 
 print(time.strftime("%Y-%m-%d %H:%M:%S"),"Starting...")
-
 #sys.argv.pop(1) #remove segundo elemento da lista de argumentos (path pra este script)
 dest_bu=sys.argv[1]
 origin_dir_bu=os.path.dirname(sys.argv[2])
@@ -32,14 +31,14 @@ base_letter=BASE_DIR.split('\\')[0]
 if dest_letter==base_letter:
     driver_id_dest_path=BU_LIST_PATH #para não dar erro de permissão
 else:
-    driver_id_dest_path=os.path.join(dest_letter,DRIVER_ID)
-if dest_letter==base_letter:  
+    driver_id_dest_path=os.path.join(dest_letter,'\\',DRIVER_ID)
+if origin_letter==base_letter:  
     driver_id_origin_path=BU_LIST_PATH #para não dar erro de permissão
 else:
-    driver_id_origin_path=os.path.join(origin_letter,DRIVER_ID)
+    driver_id_origin_path=os.path.join(origin_letter,'\\',DRIVER_ID)
 
-print('driver_id_dest_path:',driver_id_dest_path)
-print('driver_id_origin_path:',driver_id_origin_path)
+#print('driver_id_dest_path:',driver_id_dest_path)
+#print('driver_id_origin_path:',driver_id_origin_path)
 
 if not os.path.isfile(LAST_ID):
     with open(LAST_ID, 'w') as fid:
@@ -75,7 +74,7 @@ with open(BU_LIST_PATH, 'a') as f:
             line+=os.path.basename(path_bu)
         else:
             line+=os.path.basename(path_bu)+','
-    print('----->ORIGIN>'+id_origin+'>'+origin_dir_bu+'>DEST>'+id_dest+'>'+dest_bu, file=f)
+    print('----->ORIGIN>'+str(id_origin)+'>'+origin_dir_bu+'>DEST>'+str(id_dest)+'>'+dest_bu, file=f)
     print(line, file=f) #f.write(line)
 
 # %%
