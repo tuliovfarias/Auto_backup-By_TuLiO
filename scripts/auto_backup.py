@@ -7,11 +7,6 @@ import win32api
 import sys
 import os
 import time
-from pathlib import Path
-import pandas as pd
-import datetime
-from datetime import timedelta
-import shutil
 
 #for i in range(0,len(sys.argv)):
 #    print(sys.argv[i])
