@@ -27,7 +27,7 @@ def cadastro():
     print('['+time.strftime("%d-%m-%Y %H:%M:%S")+']',"Iniciando cadastro para back-up...")
     #sys.argv.pop(1) #remove segundo elemento da lista de argumentos (path pra este script)
     paths_bu=[]
-    for i in range(2,len(sys.argv)):
+    for i in range(3,len(sys.argv)):
         paths_bu.append(sys.argv[i].strip("'"))
     script_path=sys.argv[1]
     dest_bu=sys.argv[2]
