@@ -93,8 +93,6 @@ def cadastro():
 
 def get_driver_letter(id_origin,id_dest):
     #------Retorna letra dos drivers de acordo com os IDs:########################################################
-    print('id_origin:',id_origin)
-    print('id_dest:',id_dest)
     origin_disk_letter=""
     dest_disk_letter=""
     base_letter=BASE_DIR.split('\\')[0]
@@ -129,13 +127,14 @@ def backup():
                 dest_id=line_split[5]
                 dest_folder=line_split[6].strip()
                 dest_driver,origin_driver=get_driver_letter(origin_id,dest_id)
+                dest_path=os.path.join(dest_driver,dest_folder)
+                print('+----Destino:',dest_folder)
             else:
                 line_split=line.strip(" ").split(',')
                 for file_bu in line_split:
                     file_path_bu=os.path.join(origin_driver,origin_folder,file_bu.strip())
-                    dest_path=os.path.join(dest_driver,dest_folder)
                     #shutil.copyfile(file_path_bu, dest_path)
-                    print(file_path_bu,'>',dest_path)
+                    print('   Copiado:',file_path_bu)
     print('['+time.strftime("%d-%m-%Y %H:%M:%S")+']','Finalizou back-up dos arquivos!')
 
 def main():
