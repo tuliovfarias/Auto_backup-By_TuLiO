@@ -89,11 +89,33 @@ def cadastro():
                 line+=os.path.basename(path_bu)+','
         print('+---->ORIGIN>'+str(id_origin)+'>'+origin_dir_bu+'>DEST>'+str(id_dest)+'>'+dest_bu, file=bu_list)
         print(line, file=bu_list) #bu_list.write(line)
-    print('Arquivos cadastrados para back-up!', file=bu_list) #bu_list.write(line)
+    print('['+time.strftime("%d-%m-%Y %H:%M:%S")+']','Arquivos cadastrados para back-up!') #bu_list.write(line)
 
 def get_driver_letter(id_origin,id_dest):
-    print('get_driver_letter')
-    
+    #------Retorna letra dos drivers de acordo com os IDs:########################################################
+    print('id_origin:',id_origin)
+    print('id_dest:',id_dest)
+    origin_disk_letter=""
+    dest_disk_letter=""
+    base_letter=BASE_DIR.split('\\')[0]
+    if (id_origin=='0'):
+        origin_disk_letter=base_letter
+    if (id_dest=='0'):
+        dest_disk_letter=base_letter
+    disks=win32api.GetLogicalDriveStrings()[:-1].split('\x00') #retorna vetor com letra:\\ de todos os discos
+    for disk in disks:
+        file_driver_id=os.path.join(disk,DRIVER_ID)
+        try:
+            with open(file_driver_id, 'r') as fid:
+                disk_id=fid.readline().strip()
+                if (id_origin==disk_id):
+                    origin_disk_letter=disk
+                if (id_dest==disk_id):
+                    dest_disk_letter=disk
+        except:
+            pass                
+        if ((origin_disk_letter!="") & (dest_disk_letter!="")):
+            return origin_disk_letter,dest_disk_letter
 
 def backup():
     #------Backup de arquivos:####################################################################################
@@ -105,18 +127,22 @@ def backup():
                 origin_id=line_split[2]
                 origin_folder=line_split[3]
                 dest_id=line_split[5]
-                dest_folder=line_split[6]
+                dest_folder=line_split[6].strip()
                 dest_driver,origin_driver=get_driver_letter(origin_id,dest_id)
             else:
-                line_split=line.split(',')
+                line_split=line.strip(" ").split(',')
                 for file_bu in line_split:
-                    file_path_bu=os.path.join(origin_driver,origin_folder,file_bu)
+                    file_path_bu=os.path.join(origin_driver,origin_folder,file_bu.strip())
                     dest_path=os.path.join(dest_driver,dest_folder)
-                    shutil.copyfile(file_path_bu, dest_path)
+                    #shutil.copyfile(file_path_bu, dest_path)
+                    print(file_path_bu,'>',dest_path)
     print('['+time.strftime("%d-%m-%Y %H:%M:%S")+']','Finalizou back-up dos arquivos!')
 
 def main():
-    print('main')
+    if (len(sys.argv)>1):
+        cadastro()
+    else:
+        backup()
 
 if __name__ == '__main__':
    main()
