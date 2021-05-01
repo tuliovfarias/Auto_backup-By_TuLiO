@@ -35,13 +35,9 @@ dest_letter=dest_bu.split('\\')[0]
 origin_letter=origin_dir_bu.split('\\')[0]
 base_letter=BASE_DIR.split('\\')[0]
 
-if dest_letter==win_letter:
-    driver_id_dest_path=BU_LIST_PATH #para não dar erro de permissão
-else:
+if dest_letter!=win_letter:
     driver_id_dest_path=os.path.join(dest_letter,'\\',DRIVER_ID)
-if origin_letter==win_letter:  
-    driver_id_origin_path=BU_LIST_PATH #para não dar erro de permissão
-else:
+if origin_letter!=win_letter:  
     driver_id_origin_path=os.path.join(origin_letter,'\\',DRIVER_ID)
 
 #print('driver_id_dest_path:',driver_id_dest_path)
@@ -51,29 +47,36 @@ if not os.path.isfile(LAST_ID):
     with open(LAST_ID, 'w') as fid:
         fid.write("0") #caso primeiro back-up, escreve 0 na lista de ID
 
-if not os.path.isfile(driver_id_dest_path):
-    with open(LAST_ID, 'r+') as fid:
-        id_dest=int(fid.read())+1 #soma 1 no last_id (id do driver)
-        fid.seek(0)
-        fid.truncate() #apaga valor atual
-        fid.write(str(id_dest)) #coloca o valor incrementado  
-    with open(driver_id_dest_path, 'w') as fd:
-        print(id_dest, file=fd)
-else: 
-    with open(driver_id_dest_path, 'r') as fd:
-        id_dest=int(fd.readline().strip()) #Caso já exista id configurado para o driver, apenas lê       
-if not os.path.isfile(driver_id_origin_path):
-    with open(LAST_ID, 'r+') as fid:
-        id_origin=int(fid.read())+1 #soma 1 no id do driver
-        fid.seek(0)
-        fid.truncate() #apaga valor atual
-        fid.write(str(id_origin)) #coloca o valor incrementado  
-    with open(driver_id_origin_path, 'w') as fo:
-        print(id_origin, file=fo)
-else: 
-    with open(driver_id_origin_path, 'r') as fo:
-        id_origin=int(fo.readline().strip()) #Caso já exista id configurado para o driver, apenas lê
-     
+#------Cadastra ID do driver ou lê caso já estiver cadastrado (ID vale 0 caso seja disco do windows):
+if (dest_letter!=win_letter):
+    if not os.path.isfile(driver_id_dest_path):
+        with open(LAST_ID, 'r+') as fid:
+            id_dest=int(fid.read())+1 #soma 1 no last_id (id do driver)
+            fid.seek(0)
+            fid.truncate() #apaga valor atual
+            fid.write(str(id_dest)) #coloca o valor incrementado  
+        with open(driver_id_dest_path, 'w') as fd:
+            print(id_dest, file=fd)
+    else: 
+        with open(driver_id_dest_path, 'r') as fd:
+            id_dest=int(fd.readline().strip()) #Caso já exista id configurado para o driver, apenas lê
+else:
+    id_dest=0
+if (origin_letter!=win_letter):         
+    if not os.path.isfile(driver_id_origin_path):
+        with open(LAST_ID, 'r+') as fid:
+            id_origin=int(fid.read())+1 #soma 1 no id do driver
+            fid.seek(0)
+            fid.truncate() #apaga valor atual
+            fid.write(str(id_origin)) #coloca o valor incrementado  
+        with open(driver_id_origin_path, 'w') as fo:
+            print(id_origin, file=fo)
+    else: 
+        with open(driver_id_origin_path, 'r') as fo:
+            id_origin=int(fo.readline().strip()) #Caso já exista id configurado para o driver, apenas lê
+else:
+    id_origin=0
+
 with open(BU_LIST_PATH, 'a') as f:
     line='      '
     for path_bu in paths_bu:
