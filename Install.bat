@@ -19,7 +19,7 @@ move "%SCRIPT_BU_TEMP_PATH%" "%APPDATA%\Microsoft\Windows\SendTo"
 ::net user Administrador /active:yes
 echo -Agendanda tarefa "Auto_backup"
 ::Cria tarefa no Task Scheduler
-SCHTASKS /Create /RU SYSTEM /SC MINUTE /MO 5 /TN Auto_backup /TR "'%~dp0%scripts\abu_task.bat'"
+SCHTASKS /Create /RU SYSTEM /SC MINUTE /MO 1 /TN Auto_backup /TR "'%~dp0%scripts\abu_task.bat'"
 echo [%date:~6,10%-%date:~3,2%-%date:~0,2% %time:~0,8%] Instalado!
 
 PAUSE

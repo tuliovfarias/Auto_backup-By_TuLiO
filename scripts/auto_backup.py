@@ -8,7 +8,7 @@ import sys
 import os
 import time
 import shutil
-import subprocess
+#import subprocess
 
 #for i in range(0,len(sys.argv)):
 #    print(sys.argv[i])
@@ -18,7 +18,6 @@ LIST_DIR=os.path.join(BASE_DIR,'list\\')
 LAST_ID=os.path.join(LIST_DIR,'last_id.txt')
 DRIVER_ID = "\\driver_id.txt"
 BU_LIST_PATH=os.path.join(LIST_DIR,'backup_list.txt')
-
 
 def cadastro():
     print('['+time.strftime("%d-%m-%Y %H:%M:%S")+']',"Iniciando cadastro para back-up...")
@@ -141,6 +140,8 @@ def backup():
 
 def main():
     if (len(sys.argv)>1):
+        if not os.path.isdir(LIST_DIR):
+            os.mkdir(LIST_DIR)
         cadastro()
         backup()
     else:
@@ -148,4 +149,3 @@ def main():
 
 if __name__ == '__main__':
    main()
-# %%
