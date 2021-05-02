@@ -1,4 +1,4 @@
-# Auto-backup v2.0 - By TuLiO
+# Auto-backup v1.0 - By TuLiO
  Cria backup automático de arquivos no Windows.
 
 **Instalação:**
