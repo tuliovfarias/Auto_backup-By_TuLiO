@@ -2,7 +2,7 @@
 ::UTF-8
 @CHCP 65001 >nul 
 
-:restart
+::restart
 ::CD %~dp0%
 cls
 
@@ -19,11 +19,9 @@ echo -Origem: && for %%I IN (%*) DO echo %%~I
 set /p DIR_OUT= -Destino: 
 ::%SystemRoot%\explorer.exe "%DIR_OUT%"
 ::dir
-set OP=s
-set /p OP= -Confirma? (s/n)
-if %op% equ n goto restart
-
-::for %%I IN (%*) DO echo %%I
+::set OP=s
+::set /p OP= -Confirma? (s/n)
+::if %op% equ n goto restart
 
 call python "%SCRIPT_ABU%" %~dp0 "%DIR_OUT%" '%*'
 echo [%date:~0,2%-%date:~3,2%-%date:~6,10% %time:~0,8%] Finalizado!
