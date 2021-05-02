@@ -7,6 +7,8 @@ import win32api
 import sys
 import os
 import time
+import shutil
+import subprocess
 
 #for i in range(0,len(sys.argv)):
 #    print(sys.argv[i])
@@ -24,9 +26,10 @@ def cadastro():
     paths_bu=[]
     for i in range(3,len(sys.argv)):
         paths_bu.append(sys.argv[i].strip("'"))
+    print('paths_bu:',paths_bu)
     script_path=sys.argv[1]
     dest_bu=sys.argv[2]
-    origin_dir_bu=os.path.dirname(paths_bu[1])
+    origin_dir_bu=os.path.dirname(paths_bu[0])
 
     win_letter=script_path.split('\\')[0] #letra do disco do windows
     dest_letter=dest_bu.split('\\')[0]
@@ -128,13 +131,18 @@ def backup():
                 line_split=line.strip(" ").split(',')
                 for file_bu in line_split:
                     file_path_bu=os.path.join(origin_driver,origin_folder,file_bu.strip())
-                    #shutil.copyfile(file_path_bu, dest_path)
+                    try:
+                        shutil.copy(file_path_bu, dest_path)  
+                    except:
+                        shutil.copytree(file_path_bu, dest_path+"\\"+file_bu.strip(), dirs_exist_ok=True)
+                        #subprocess.call(['robocopy ', file_path_bu, dest_path, '/mir' ])                 
                     print('   Copiado:',file_path_bu)
     print('['+time.strftime("%d-%m-%Y %H:%M:%S")+']','Finalizou back-up dos arquivos!')
 
 def main():
     if (len(sys.argv)>1):
         cadastro()
+        backup()
     else:
         backup()
 
