@@ -8,6 +8,7 @@ import sys
 import os
 import time
 import shutil
+import ctypes
 #import subprocess
 
 #for i in range(0,len(sys.argv)):
@@ -33,7 +34,6 @@ def cadastro():
     win_letter=script_path.split('\\')[0] #letra do disco do windows
     dest_letter=dest_bu.split('\\')[0]
     origin_letter=origin_dir_bu.split('\\')[0]
-    base_letter=BASE_DIR.split('\\')[0]
 
     if dest_letter!=win_letter:
         driver_id_dest_path=os.path.join(dest_letter,'\\',DRIVER_ID)
@@ -57,6 +57,7 @@ def cadastro():
                 fid.write(str(id_dest)) #coloca o valor incrementado  
             with open(driver_id_dest_path, 'w') as fd:
                 print(id_dest, file=fd)
+            ctypes.windll.kernel32.SetFileAttributesW(path, 2)
         else: 
             with open(driver_id_dest_path, 'r') as fd:
                 id_dest=int(fd.readline().strip()) #Caso já exista id configurado para o driver, apenas lê
