@@ -3,16 +3,16 @@
 #from IPython import get_ipython
 #get_ipython().magic('reset -sf')
 
-import win32api
+#import win32api
 import sys
 import os
 import time
 import shutil
 import ctypes
-#import subprocess
+import subprocess
 
-#for i in range(0,len(sys.argv)):
-#    print(str(i)+":",sys.argv[i])
+for i in range(0,len(sys.argv)):
+    print(str(i)+":",sys.argv[i])
 
 BASE_DIR=os.path.dirname(os.path.dirname(__file__))
 LIST_DIR=os.path.join(BASE_DIR,'list\\')
@@ -89,7 +89,7 @@ def cadastro():
         print(line, file=bu_list) #bu_list.write(line)
     print('['+time.strftime("%d-%m-%Y %H:%M:%S")+']','Arquivos cadastrados para back-up!') #bu_list.write(line)
 
-def get_driver_letter(id_origin,id_dest):
+#def get_driver_letter(id_origin,id_dest):
     #------Retorna letra dos drivers de acordo com os IDs:########################################################
     origin_disk_letter=""
     dest_disk_letter=""
@@ -98,9 +98,33 @@ def get_driver_letter(id_origin,id_dest):
         origin_disk_letter=base_letter
     if (id_dest=='0'):
         dest_disk_letter=base_letter
-    disks=win32api.GetLogicalDriveStrings()[:-1].split('\x00') #retorna vetor com letra:\\ de todos os discos
+    #disks=win32api.GetLogicalDriveStrings()[:-1].split('\x00') #retorna vetor com letra:\\ de todos os discos
     for disk in disks:
         file_driver_id=os.path.join(disk,DRIVER_ID)
+        try:
+            with open(file_driver_id, 'r') as fid:
+                disk_id=fid.readline().strip()
+                if (id_origin==disk_id):
+                    origin_disk_letter=disk
+                if (id_dest==disk_id):
+                    dest_disk_letter=disk
+        except:
+            pass                
+        if ((origin_disk_letter!="") & (dest_disk_letter!="")):
+            return origin_disk_letter,dest_disk_letter
+
+def get_driver_letter2(id_origin,id_dest):
+    #------Retorna letra dos drivers de acordo com os IDs:########################################################
+    origin_disk_letter=""
+    dest_disk_letter=""
+    base_letter=BASE_DIR.split('\\')[0]
+    if (id_origin=='0'):
+        origin_disk_letter=base_letter
+    if (id_dest=='0'):
+        dest_disk_letter=base_letter
+    disks=subprocess.check_output(['wmic','logicaldisk','get','name']).decode('ascii').split("\r\r\n") #retorna vetor com letra:\\ de todos os discos
+    for disk in disks:
+        file_driver_id=os.path.join(disk.strip(" "),DRIVER_ID)
         try:
             with open(file_driver_id, 'r') as fid:
                 disk_id=fid.readline().strip()
@@ -124,7 +148,7 @@ def backup():
                 origin_folder=line_split[3]
                 dest_id=line_split[5]
                 dest_folder=line_split[6].strip()
-                dest_driver,origin_driver=get_driver_letter(origin_id,dest_id)
+                dest_driver,origin_driver=get_driver_letter2(origin_id,dest_id)
                 dest_path=os.path.join(dest_driver,dest_folder)
                 print('+----Destino:',dest_folder)
             else:
@@ -150,3 +174,4 @@ def main():
 
 if __name__ == '__main__':
    main()
+# %%
