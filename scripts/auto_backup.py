@@ -11,8 +11,8 @@ import shutil
 import ctypes
 import subprocess
 
-#for i in range(0,len(sys.argv)):
-#    print(str(i)+":",sys.argv[i])
+for i in range(0,len(sys.argv)):
+    print(str(i)+":",sys.argv[i])
 
 BASE_DIR=os.path.dirname(os.path.dirname(__file__))
 LIST_DIR=os.path.join(BASE_DIR,'list\\')
