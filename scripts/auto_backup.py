@@ -11,8 +11,8 @@ import shutil
 import ctypes
 #import subprocess
 
-#for i in range(0,len(sys.argv)):
-#    print(sys.argv[i])
+for i in range(0,len(sys.argv)):
+    print(str(i)+":",sys.argv[i])
 
 BASE_DIR=os.path.dirname(os.path.dirname(__file__))
 LIST_DIR=os.path.join(BASE_DIR,'list\\')
@@ -25,7 +25,7 @@ def cadastro():
     #sys.argv.pop(1) #remove segundo elemento da lista de argumentos (path pra este script)
     paths_bu=[]
     for i in range(3,len(sys.argv)):
-        paths_bu.append(sys.argv[i].strip("'"))
+        paths_bu.append(sys.argv[i].strip().strip("'"))
     print('paths_bu:',paths_bu)
     script_path=sys.argv[1]
     dest_bu=sys.argv[2]
@@ -57,7 +57,7 @@ def cadastro():
                 fid.write(str(id_dest)) #coloca o valor incrementado  
             with open(driver_id_dest_path, 'w') as fd:
                 print(id_dest, file=fd)
-            ctypes.windll.kernel32.SetFileAttributesW(path, 2)
+            ctypes.windll.kernel32.SetFileAttributesW(driver_id_dest_path, 2)
         else: 
             with open(driver_id_dest_path, 'r') as fd:
                 id_dest=int(fd.readline().strip()) #Caso já exista id configurado para o driver, apenas lê
@@ -72,6 +72,7 @@ def cadastro():
                 fid.write(str(id_origin)) #coloca o valor incrementado  
             with open(driver_id_origin_path, 'w') as fo:
                 print(id_origin, file=fo)
+            ctypes.windll.kernel32.SetFileAttributesW(driver_id_origin_path, 2)
         else: 
             with open(driver_id_origin_path, 'r') as fo:
                 id_origin=int(fo.readline().strip()) #Caso já exista id configurado para o driver, apenas lê
