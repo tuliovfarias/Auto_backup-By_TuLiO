@@ -11,8 +11,8 @@ import shutil
 import ctypes
 #import subprocess
 
-for i in range(0,len(sys.argv)):
-    print(str(i)+":",sys.argv[i])
+#for i in range(0,len(sys.argv)):
+#    print(str(i)+":",sys.argv[i])
 
 BASE_DIR=os.path.dirname(os.path.dirname(__file__))
 LIST_DIR=os.path.join(BASE_DIR,'list\\')
@@ -26,7 +26,6 @@ def cadastro():
     paths_bu=[]
     for i in range(3,len(sys.argv)):
         paths_bu.append(sys.argv[i].strip().strip("'"))
-    print('paths_bu:',paths_bu)
     script_path=sys.argv[1]
     dest_bu=sys.argv[2]
     origin_dir_bu=os.path.dirname(paths_bu[0])
