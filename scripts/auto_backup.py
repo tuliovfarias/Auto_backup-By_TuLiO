@@ -89,7 +89,7 @@ def cadastro():
         print(line, file=bu_list) #bu_list.write(line)
     print('['+time.strftime("%d-%m-%Y %H:%M:%S")+']','Arquivos cadastrados para back-up!') #bu_list.write(line)
 
-#def get_driver_letter(id_origin,id_dest):
+"""def get_driver_letter(id_origin,id_dest):
     #------Retorna letra dos drivers de acordo com os IDs:########################################################
     origin_disk_letter=""
     dest_disk_letter=""
@@ -98,7 +98,7 @@ def cadastro():
         origin_disk_letter=base_letter
     if (id_dest=='0'):
         dest_disk_letter=base_letter
-    #disks=win32api.GetLogicalDriveStrings()[:-1].split('\x00') #retorna vetor com letra:\\ de todos os discos
+    disks=win32api.GetLogicalDriveStrings()[:-1].split('\x00') #retorna vetor com letra:\\ de todos os discos
     for disk in disks:
         file_driver_id=os.path.join(disk,DRIVER_ID)
         try:
@@ -111,7 +111,7 @@ def cadastro():
         except:
             pass                
         if ((origin_disk_letter!="") & (dest_disk_letter!="")):
-            return origin_disk_letter,dest_disk_letter
+            return origin_disk_letter,dest_disk_letter"""
 
 def get_driver_letter2(id_origin,id_dest):
     #------Retorna letra dos drivers de acordo com os IDs:########################################################
